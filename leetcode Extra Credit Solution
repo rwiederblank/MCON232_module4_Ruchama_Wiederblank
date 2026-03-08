@@ -1,0 +1,27 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        subtraction = {
+            'IV' : 4,
+            'IX' : 9,
+            'XL' : 40,
+            'XC' : 90,
+            'CD' : 400,
+            'CM' : 900,
+        }
+        regular = {
+            'I' : 1,
+            'V' : 5,
+            'X' : 10,
+            'L' : 50,
+            'C' : 100,
+            'D' : 500,
+            'M' : 1000
+        }
+        final_int = 0
+        for key, value in subtraction.items():
+            if key in s:
+                final_int += value
+                s = s.replace(key,"")
+        for letter in s:
+            final_int += regular[letter]
+        return final_int
